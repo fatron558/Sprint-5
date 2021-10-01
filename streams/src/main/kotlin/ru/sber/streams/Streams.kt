@@ -42,7 +42,7 @@ fun Shop.getMostPopularProductInCity(): Map<City, Product> =
             element.orders.map { it.products }.flatten().groupingBy { it }.eachCount()
         else {
             accumulator!!.toMutableMap().apply {
-                element.orders.map { it.products }.flatten().groupingBy { it }.eachCount().forEach { key, value ->
+                element.orders.map { it.products }.flatten().groupingBy { it }.eachCount().forEach { (key, value) ->
                     merge(key, value) { currentValue, addedValue -> currentValue + addedValue }
                 }
             }
